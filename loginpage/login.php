@@ -1,6 +1,6 @@
 <?php
 require "../config/koneksi.php";
-
+session_start();
 
 // jika tombol masuk/login di klik
 if(isset($_POST["submit"])){
@@ -15,7 +15,12 @@ if(mysqli_num_rows($query) === 1){
   
   // cek kesamaan password
   if(password_verify($password, $result["password"])){
-   
+  //  set sessionnya
+    $_SESSION["login"] = true;
+
+    // pindah ke page utama
+    header("Location: ../index.php");
+    exit;
   }
 }
 }

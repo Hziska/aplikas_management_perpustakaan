@@ -1,5 +1,11 @@
 <?php
 require 'functions.php';
+session_start();
+if(!isset($_SESSION["login"])){
+    header("Location: ../loginpage/login.php");
+    exit;
+}
+
 
 // tangkap id dari get
 $id = $_GET["id"];
@@ -61,20 +67,20 @@ if(isset($_POST["submit"])){
 
                 <div class="mb-3">
                     <label class="mb-2" for="tahun">tahun terbit</label>
-                    <input type="text" class="form-control" name="tahun" id="tahun" value="<?= $book["tahun_terbit"]?>">
+                    <input type="text" inputmode="numeric" class="form-control" name="tahun" id="tahun" value="<?= $book["tahun_terbit"]?>">
                 </div>
                 <div class="mb-3">
                     <label class="mb-2" for="gendre">gendre buku</label>
                     <select name="gendre" id="gendre" class="form-control">
                         <option >pilih gendre</option>
-                        <option value="action">action</option>
-                        <option value="romance">romance</option>
-                        <option value="adventure">adventure</option>
-                        <option value="drama">drama</option>
-                        <option value="study">study</option>
+                        <option <?php if($book["gendre"] == 'action')echo "selected"?> value="action">action</option>
+                        <option <?php if($book["gendre"] == 'romance')echo "selected"?> value="romance">romance</option>
+                        <option <?php if($book["gendre"] == 'adventure')echo "selected"?> value="adventure">adventure</option>
+                        <option <?php if($book["gendre"] == 'drama')echo "selected"?> value="drama">drama</option>
+                        <option <?php if($book["gendre"] == 'study')echo "selected"?> value="study">study</option>
                      </select>
                 </div>
-
+                
                 <div class="mb-3">
                     <label class="mb-2" for="gambar">gambar buku</label>
                     <input type="file" class="form-control" name="gambar" id="gambar">

@@ -1,5 +1,15 @@
 <?php
 require 'config/functions.php';
+session_start();
+
+
+// cek apakah ada session 
+if(!isset($_SESSION["login"])){
+    header("Location: loginpage/login.php");
+    exit;
+}
+
+
 
 // data ini menghasilkan nilai array assoiatif
 $books = query("SELECT * FROM books");
@@ -16,7 +26,7 @@ if(isset($_POST["keyword"])){
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Bootstrap Simple Data Table</title>
+<title>aplikasi management perpustakaan</title>
 <!-- style -->
  <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
@@ -47,7 +57,7 @@ if(isset($_POST["keyword"])){
                 <div class="search-box">
                     <form action="" method="post">
                     <i class="material-icons">&#xE8B6;</i>
-                    <input type="text" class="form-control" name="keyword" placeholder="Cari Buku&hellip;">
+                    <input type="text" class="form-control" name="keyword" placeholder="Cari Judul Buku&hellip;">
                     </form>
                 </div>
             </div>

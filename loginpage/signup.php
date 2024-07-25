@@ -102,7 +102,10 @@ if(isset($_POST["submit"])){
       
                     <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5 mt-4 text-center" type="submit" name="submit">Sign Up</button>
                   </form>
-      
+                  <div class="m-3 pt-4">
+                    <p class="mb-0 text-center">Sudah punya akun? <a href="login.php" class="text-white-50 fw-bold">Login</a>
+                    </p>
+                  </div>
                   </div>
 
                  

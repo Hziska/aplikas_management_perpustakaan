@@ -1,5 +1,10 @@
 <?php
 require 'functions.php';
+session_start();
+if(!isset($_SESSION["login"])){
+    header("Location: ../loginpage/login.php");
+    exit;
+}
 
 // ketika button tambah di klik 
 if(isset($_POST["submit"])){
@@ -57,7 +62,7 @@ if(isset($_POST["submit"])){
 
                 <div class="mb-3">
                     <label class="mb-2" for="tahun">tahun terbit</label>
-                    <input required type="text" class="form-control" name="tahun" id="tahun">
+                    <input required type="text" inputmode="numeric" class="form-control" name="tahun" id="tahun">
                 </div>
                 <div class="mb-3">
                     <label class="mb-2" for="gendre">gendre buku</label>
